@@ -21,26 +21,50 @@ public class RPSGame{
             }
         }
     }
+    static int userInput(Scanner sc){
+        boolean flag = true;
+        int userchoice = 0;
+        while (flag) {
+            userchoice = sc.nextInt();
+            if(userchoice>3 || userchoice<1){
+                System.out.println("Choose any number between 1 to 3");
+            }
+            else{
+                flag= false;
+            }
+        }
+        return userchoice;
+    }
 
     static void gameWithComputer(Scanner sc){
         System.out.println("Friends are always great and a game with them is just the way to have fun!");
         System.out.println("1.Rock👊\n2.Paper🤚\n3.Scissor✌️");
         System.out.println("Enter your choice(1 or 2 or 3): ");
-        int userchoice = sc.nextInt();
+        int userchoice = userInput(sc);
         System.out.println("The computer's playing...");
         Random rand = new Random();
         int computerchoice = rand.nextInt(3);
-        System.out.println("The computer's choice is " + computerchoice);
-        gameResult(userchoice, computerchoice);
+        String cchoice = "";
+        switch (computerchoice) {
+            case 0:
+                cchoice = "Rock";
+                break;
+            case 1: 
+                cchoice = "Paper";
+            case 2:
+                cchoice = "Scissor";
+        }
+        System.out.println("The computer's choice is " + cchoice);
+        gameResult(userchoice, computerchoice+1);
     }
     
     static void gameWithFriend(Scanner sc){
         System.out.println("Friends are always great and a game with them is just the way to have fun!");
         System.out.println("1.Rock👊\n2.Paper🤚\n3.Scissor✌️");
         System.out.println("Enter your choice(1 or 2 or 3): ");
-        int userchoice1 = sc.nextInt();
+        int userchoice1 = userInput(sc);
         System.out.println("Enter friend's choice(1 or 2 or 3): ");
-        int userchoice2 = sc.nextInt();
+        int userchoice2 = userInput(sc);
         gameResult(userchoice1, userchoice2);
 
 
